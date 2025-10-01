@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/shared/assets/fonts/Mont-Black.ttf",
+      "sha1": "0f1c36999a3983f660158a254956d7d96c5591ee"
+    },
+    {
+      "path": "src/shared/assets/fonts/Mont-Bold.ttf",
+      "sha1": "1339f8b840d250c7da4366fa14651847a57ecfc9"
+    },
+    {
+      "path": "src/shared/assets/fonts/Mont-Heavy.ttf",
+      "sha1": "2208c41f0ff58894ba4461b30f7bf1dc1ca54755"
+    },
+    {
+      "path": "src/shared/assets/fonts/Mont-Light.ttf",
+      "sha1": "7b2648f2c3807bdbb1666dbf475d85779d8e168d"
+    },
+    {
+      "path": "src/shared/assets/fonts/Mont-Regular.ttf",
+      "sha1": "db9ee4d5644d09f7b59b35629e2034e6da5fd824"
+    },
+    {
+      "path": "src/shared/assets/fonts/Mont-SemiBold.ttf",
+      "sha1": "b1ea4dde945ab7dfa084e85c5e1613c23d43fd49"
+    },
+    {
+      "path": "src/shared/assets/fonts/Mont-Thin.ttf",
+      "sha1": "0caebe22f1e8ab55dfd9f35616880e3f56677cd3"
+    },
+    {
+      "path": "src/shared/assets/fonts/fonts-config.ts",
+      "sha1": "54febf69b81702cd9002b2aab97ca06d9ce58584"
+    }
+  ]
+}
