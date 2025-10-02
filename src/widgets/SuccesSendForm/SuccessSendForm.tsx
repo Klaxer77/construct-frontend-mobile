@@ -60,7 +60,7 @@ export const SuccesSendForm = ({
         strokeLinejoin="round"
       />
     </Svg>
-    <Text style={styles.title}>{title}</Text>
+    <Text  numberOfLines={2} ellipsizeMode="tail" style={styles.title}>{title}</Text>
     <Text style={styles.subtitle}>{subtitle}</Text>
     <Text style={styles.text}>{text}</Text>
     <View style={styles.buttonContainer}>

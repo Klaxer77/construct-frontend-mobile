@@ -1,7 +1,7 @@
 import { useSetUserActive } from '@/features/auth/hooks/use-actions';
 import { useVerificationUser } from '@/features/auth/hooks/use-verification-user';
 import { useEditNfcIsObject } from '@/features/listObjects/hook/use-actions';
-import { ApiResponse, Icon, IconName, Status } from '@/shared';
+import { ApiResponse, colors, Icon, IconName, Status } from '@/shared';
 import { Fonts } from '@/shared/assets/fonts/fonts-config';
 import { api } from '@/shared/config/api';
 import { endpoints } from '@/shared/config/endpoints';
@@ -83,6 +83,7 @@ const ObjectGeoTagsScreen: React.FC = () => {
     })
     .catch((error) => {
       console.log(error)
+      setStatus("rejected")
       setStatusAddVerificatio("rejected")
     })
   };
@@ -96,7 +97,7 @@ const ObjectGeoTagsScreen: React.FC = () => {
   return (
     <>
       <SafeAreaView
-        style={[styles.containerMain, { paddingBottom: bottom + 110 }]}
+        style={[styles.containerMain, { paddingBottom: bottom + 50 }]}
         edges={['top', 'bottom']}
       >
         <SafeAreaView edges={['left', 'right']}>
@@ -110,6 +111,7 @@ const ObjectGeoTagsScreen: React.FC = () => {
           <View style={styles.header}>
             <Text style={styles.title}>{params?.object.title}</Text>
             <Text style={styles.subtitle}>Добавление Геометок</Text>
+            {(statusAddVerification === "rejected" )&& <Text style={styles.textError}>Метка уже была добавлена на другой обьект</Text>}
           </View>
           <View style={styles.main}>
             <Text
@@ -119,7 +121,10 @@ const ObjectGeoTagsScreen: React.FC = () => {
             </Text>
             {status === 'loading' || status === "rejected" ? (
               <Pressable
-                onPress={() => setStatus("loading")}
+                onPress={() => {
+                  setStatusAddVerificatio("idle")
+                  setStatus("loading")
+                }}
                 style={styles.nfcContainer}
               >
                 <NfcAnima />
@@ -281,6 +286,13 @@ const styles = StyleSheet.create({
     fontFamily: Fonts[600],
     color: '#808080',
   },
+  textError: {
+    fontSize: 14,
+    marginTop: 10,
+    lineHeight: 18,
+    fontFamily: Fonts[700],
+    color: colors.warning,
+  }
 });
 
 export default ObjectGeoTagsScreen;

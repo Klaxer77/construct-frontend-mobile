@@ -163,17 +163,17 @@ const ObjectActivationScreen: React.FC = () => {
       </SafeAreaView>
       <View style={styles.content}>
         <ScrollView
-          contentContainerStyle={[styles.containerScroll, { paddingBottom: bottom + 120 }]}
+          contentContainerStyle={[styles.containerScroll, { paddingBottom: bottom + 70 }]}
           showsVerticalScrollIndicator={false}
         >
           <View>
             <View style={styles.header}>
-              <Text style={styles.title}>{params?.object?.title}</Text>
+              <Text  numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{params?.object?.title}</Text>
               <Text style={styles.subtitle}>
                 Заполните чек лист для активации объекта
               </Text>
             </View>
-            <View style={{ height: 40 }}>
+            <View style={{ height: 43, marginTop: 20 }}>
               <TabWradder
                 onChange={setActiveTab}
                 list={['Главная', 'Параметры']}
@@ -235,7 +235,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexGrow: 1,
     paddingTop: 10,
-    gap: 40,
   },
   header: {
     paddingHorizontal: 25,

@@ -134,7 +134,7 @@ const CommentOpenItem = ({
       <CustomButton
       text="Отправить исправление" onPress={() => setViewForm(true)} styleButton={styles.button}/>
     }
-    {(status !== "reject" && status && !(status === "check" && type === "сonstructionСontrol") && (remark && type === "inspection" && status === "check"))  &&
+    {(status !== "reject" && status && !(status === "check" && type === "сonstructionСontrol") && !(status === "check" && type === "inspection" && !remark))  &&
       <CustomButton secondary disable={status === "check" || status === "fixed"} text={statusText[status]} textColorDefault={status === "check" ? "black": "#08875D"} styleText={styles[status]}  styleButton={[styles.button, styles.buttonReject]}/>
     }
     {(type === "prost" && viewForm) &&

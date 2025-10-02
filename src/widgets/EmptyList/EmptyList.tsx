@@ -2,11 +2,11 @@ import { Icon, IconName } from '@/shared';
 import { Fonts } from '@/shared/assets/fonts/fonts-config';
 import {StyleSheet, Text, View } from 'react-native';
 
-export const EmpryList: React.FC = () => {
+export const EmpryList = ({title}: {title: string}) => {
   return (
     <View style={styles.container}>
       <Icon name={IconName.PlusMap} />
-      <Text style={styles.title}>Отсутсвуют активные объекты</Text>
+      <Text style={styles.title}>{title}</Text>
       <Text style={styles.text}>
         Активируйте их или создайте новый, в Веб Версии сервиса для активации.
       </Text>

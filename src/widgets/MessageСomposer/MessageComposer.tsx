@@ -25,7 +25,7 @@ export const MessageComposer = ({
   }
 
   return <View style={styles.container}>
-    <PopupSendFile pdf={false} limit={6}  onSelectFiles={(files) => sendFile(files)} onClose={() => setVisible(false)} isVisible={visible}/>
+    <PopupSendFile pdf={false} limit={6} onSelectFile={(file) => sendFile([file])}  onSelectFiles={(files) => sendFile(files)} onClose={() => setVisible(false)} isVisible={visible}/>
     <Pressable disabled={!activeSendFile} onPress={() => setVisible(true)} style={[styles.button, activeSendFile && styles.activeButton]}>
       <Icon color={activeSendFile ? "white": "#B0B0B0"} name={IconName.Plus}/>
     </Pressable>

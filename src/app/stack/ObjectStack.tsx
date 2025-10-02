@@ -8,6 +8,7 @@ import ObjectControlFormScreen from "@/screens/ObjectStackScreens/ObjectControlF
 import ObjectControlOpenScreen from "@/screens/ObjectStackScreens/ObjectControlOpenScreen/ObjectControlOpenScreen";
 import ObjectControlScreen from "@/screens/ObjectStackScreens/ObjectControlScreen/ObjectControlScreen";
 import ObjectGeoTagsScreen from "@/screens/ObjectStackScreens/ObjectGeoTagsScreen/ObjectGeoTagsScreen";
+import ObjectMapScreen from "@/screens/ObjectStackScreens/ObjectMapScreen/ObjectMapScreen";
 import ObjectSendWorkScreen from "@/screens/ObjectStackScreens/ObjectSendWorkScreen/ObjectSendWorkScreen";
 import ObjectTalksScreen from "@/screens/ObjectStackScreens/ObjectTalksScreen/ObjectTalksScreen";
 import ObjectVerificationOpenScreen from "@/screens/ObjectStackScreens/ObjectVerificationOpenScreen/ObjectVerificationOpenScreen";
@@ -26,6 +27,7 @@ export const ObjectStack = () => {
       <Stack.Screen options={{ gestureEnabled: false }} name="ObjectChooseObject" component={ObjectChooseObjectScreen} />
       <Stack.Screen name="ObjectContractor" component={ObjectContractorScreen} />
       <Stack.Screen name="ObjectGeoTags" component={ObjectGeoTagsScreen} />
+      <Stack.Screen name="ObjectMap" component={ObjectMapScreen} />
       <Stack.Screen name="ObjectActivation" component={ObjectActivationScreen} />
       <Stack.Screen options={{ gestureEnabled: false }} name="ObjectAvailableObject" component={ObjectAvaialbelObjectScreen} />
       <Stack.Screen name="ObjectTalks" component={ObjectTalksScreen} />

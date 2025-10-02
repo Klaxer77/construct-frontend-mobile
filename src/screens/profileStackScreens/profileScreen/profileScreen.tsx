@@ -29,7 +29,17 @@ const ProfileScreen: React.FC = () => {
 
   useEffect(() => {
     if (status === "received"){
-      navigate.navigate("authStack", {screen: "Auth"})
+      navigate.reset({
+      index: 0, 
+      routes: [
+        {
+          name: "authStack",
+          state: {
+            routes: [{ name: "Auth" }]
+          }
+        }
+      ]
+    });
     }
   }, [status, navigate])
 
@@ -71,19 +81,20 @@ const ProfileScreen: React.FC = () => {
                   const isLastItem = globalIndex === totalItems - 1;
                   
                   return (
-                    <TabItem
-                      wrapperStyle={{borderBottomWidth: isLastItem ? 0: 1}}
-                      key={itemIndex}
-                      icon={item.icon}
-                      title={item.title}
-                      subtitle={item.subtitle}
-                    >
-                      {globalIndex === 5 ? <Switcher/>: 
-                        <Pressable style={styles.pressTab} onPress={tabCallbacks[globalIndex]}>
-                          <ArrowRigthIcon/>
-                        </Pressable>
-                      }
-                    </TabItem>
+                    <Pressable key={itemIndex} onPress={tabCallbacks[globalIndex]}>
+                      <TabItem
+                        wrapperStyle={{borderBottomWidth: isLastItem ? 0: 1}}
+                        icon={item.icon}
+                        title={item.title}
+                        subtitle={item.subtitle}
+                      >
+                        {globalIndex === 5 ? <Switcher/>: 
+                          <Pressable style={styles.pressTab}>
+                            <ArrowRigthIcon/>
+                          </Pressable>
+                        }
+                      </TabItem>
+                    </Pressable>
                   );
                 })}
               </View>

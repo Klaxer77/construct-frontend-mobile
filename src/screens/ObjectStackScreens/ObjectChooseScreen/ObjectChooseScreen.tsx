@@ -133,7 +133,7 @@ const ObjectChooseScreen: React.FC = () => {
     sendFileAkt(request)
   };
 
-  const listTabs = user?.role === "contractor" ? ['Активные']: user?.role === "inspection" ? ['Активные', 'Неактивные']: ['Активные', 'Неактивные', 'Требуются Геометки']
+  const listTabs = user?.role === "contractor" ? ['Активные']: user?.role === "inspection" ? ['Активные', 'Неактивные', 'Акт открытия', 'Cогласование']: ['Активные', 'Неактивные', 'Акт открытия', 'Cогласование', 'Требуются Геометки']
   
   return (
     <>
@@ -180,7 +180,7 @@ const ObjectChooseScreen: React.FC = () => {
                     data={activeList}
                     scrollEnabled={false}
                     keyExtractor={item => String(item.id)}
-                    ListEmptyComponent={<EmpryList />}
+                    ListEmptyComponent={<EmpryList title='Отсутсвуют активные объекты' />}
                     renderItem={({ item }) => {
                       return (
                         <ObjectItem
@@ -200,7 +200,7 @@ const ObjectChooseScreen: React.FC = () => {
                     data={activeList}
                     scrollEnabled={false}
                     keyExtractor={item => String(item.id)}
-                    ListEmptyComponent={<EmpryList />}
+                    ListEmptyComponent={<EmpryList title='Отсутсвуют активные объекты'/>}
                     renderItem={({ item }) => {
                       return (
                         <ObjectItem
@@ -231,8 +231,8 @@ const ObjectChooseScreen: React.FC = () => {
                     contentContainerStyle={styles.cards}
                     data={unActiveList}
                     scrollEnabled={false}
+                    ListEmptyComponent={<EmpryList title='Отсутсвуют неактивные объекты'/>}
                     keyExtractor={item => String(item.id)}
-                    ListEmptyComponent={<EmpryList />}
                     renderItem={({ item }) => {
                       return (
                         <ObjectItem
@@ -258,16 +258,13 @@ const ObjectChooseScreen: React.FC = () => {
                     }}
                   />
                 )}
-                {activeTab === 'Неактивные' && (
-                  <Text style={styles.listTitle}>На согласовании</Text>
-                )}
-                {activeTab === 'Неактивные' && (
+                {activeTab === 'Cогласование' && (
                   <FlatList
                     contentContainerStyle={styles.cards}
                     data={agreementList}
                     scrollEnabled={false}
+                    ListEmptyComponent={<EmpryList title='Отсутсвуют обьекты для согласования'/>}
                     keyExtractor={item => String(item.id)}
-                    ListEmptyComponent={<EmpryList />}
                     renderItem={({ item }) => {
                       return <ObjectItem title={item.title}
                         rigthElement={
@@ -288,16 +285,13 @@ const ObjectChooseScreen: React.FC = () => {
                     }}
                   />
                 )}
-                {activeTab === 'Неактивные' && (
-                  <Text style={styles.listTitle}>Требуется акт открытия</Text>
-                )}
-                {activeTab === 'Неактивные' && (
+                {activeTab === 'Акт открытия' && (
                   <FlatList
                     contentContainerStyle={styles.cards}
                     data={actOpenningList}
+                    ListEmptyComponent={<EmpryList title='Отсутсвуют обьекты для отправки акта'/>}
                     scrollEnabled={false}
                     keyExtractor={item => String(item.id)}
-                    ListEmptyComponent={<EmpryList />}
                     renderItem={({ item }) => {
                       return (
                         <ObjectItem

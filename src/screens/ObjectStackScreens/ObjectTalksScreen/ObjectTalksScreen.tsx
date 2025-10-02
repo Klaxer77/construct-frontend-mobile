@@ -122,7 +122,7 @@ const ObjectTalksScreen: React.FC = () => {
     setStatus("loading")
 
     const endpoint = params.header === "замечание" ? endpoints.remarks.create(currentObject?.id ?? ""): endpoints.violations.create(currentObject?.id ?? "")
-
+    
     api.post(
       endpoint,
       formData,

@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   containerList: {
     paddingHorizontal: 25,
     paddingTop: 25,
-    gap: 25,
+    gap: 15,
   },
 });
 

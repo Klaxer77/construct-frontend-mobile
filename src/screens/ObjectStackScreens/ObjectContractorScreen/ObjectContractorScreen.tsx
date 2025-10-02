@@ -109,13 +109,13 @@ const ObjectContractorScreen: React.FC = () => {
       <ScrollView
         contentContainerStyle={[
           styles.containerScroll,
-          { paddingBottom: bottom + 120 },
+          { paddingBottom: bottom + 70 },
         ]}
       >
         <View style={styles.content}>
           <View style={styles.header}>
-            <Text style={styles.title}>{params?.object?.title}</Text>
-            <Text style={styles.subtitle}>Выберите подрядчика для объекта</Text>
+            <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{params?.object?.title}</Text>
+            <Text  style={styles.subtitle}>Выберите подрядчика для объекта</Text>
           </View>
 
           <Pressable style={styles.dropdownHeader} onPress={toggleDropdown}>
@@ -125,7 +125,7 @@ const ObjectContractorScreen: React.FC = () => {
 
             <View style={styles.dropdownTextWrapper}>
               <Text style={styles.dropdownLabel}>Название</Text>
-              <Text style={styles.dropdownValue}>{selected ? selected.company.title: 'Выберите'}</Text>
+              <Text numberOfLines={1} ellipsizeMode="tail" style={styles.dropdownValue}>{selected ? selected.company.title: 'Выберите'}</Text>
             </View>
 
             <Animated.View
@@ -146,7 +146,7 @@ const ObjectContractorScreen: React.FC = () => {
 
           {dropdownOpen && (
             <Animated.View
-              style={{ overflow: 'hidden', height: animatedHeight }}
+              style={{ overflow: 'hidden', height: animatedHeight, paddingTop: 10, }}
             >
               {contractors.map(item => (
                 <TouchableOpacity
@@ -215,27 +215,33 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    marginTop: 10,
+    marginTop: 24,
     fontFamily: Fonts[600],
     color: '#808080',
   },
   dropdownHeader: {
     borderWidth: 1,
+    height: 82,
     borderColor: '#E8E8E8',
     borderRadius: 20,
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 20,
+    width: "100%",
   },
   iconWrapper: {
-    marginRight: 10,
+    paddingRight: 10,
+    borderRightWidth: 1,
+    borderColor: "#E8E8E8",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: 'center',
   },
   dropdownTextWrapper: {
     flex: 1,
-    borderLeftWidth: 1,
     borderLeftColor: '#E8E8E8',
     paddingLeft: 10,
+    gap: 8,
   },
   dropdownLabel: {
     fontSize: 14,

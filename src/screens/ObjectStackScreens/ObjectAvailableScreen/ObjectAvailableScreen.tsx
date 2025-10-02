@@ -4,12 +4,13 @@ import { useGetCurrentObject, useUserAuth } from '@/features/auth/hooks/use-sele
 import { colors, Icon, IconName } from '@/shared';
 import { Fonts } from '@/shared/assets/fonts/fonts-config';
 import { useTypeNavigation } from '@/shared/hooks/useTypeNavigation';
+import { getCord } from '@/shared/utils/coordinates';
 import Header from '@/widgets/Header/ui/Header';
 import PopupChooseObject from '@/widgets/PopupChooseObject/PopupChooseObject';
 import { useState } from 'react';
 import {
   FlatList,
-  ImageBackground,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -19,7 +20,16 @@ import {
   SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import YaMap, { Polygon } from 'react-native-yamap';
 
+
+type Point = { lat: number; lon: number };
+
+export const multiPolygonToPoints = (multiPolygon: Array<Array<[number, number]>>): Point[][] => {
+  return multiPolygon.map((polygon) =>
+    polygon.map(([lat, lon]) => ({ lat, lon }))
+  );
+};
 
 const ObjectAvailableScreen: React.FC = () => {
   const { bottom } = useSafeAreaInsets();
@@ -83,6 +93,9 @@ const ObjectAvailableScreen: React.FC = () => {
     }
   }
 
+
+  const objCoord = currentObject?  getCord(currentObject?.coords): null
+ 
   return (
     <>
       <SafeAreaView style={styles.containerMain} edges={['top', 'bottom']}>
@@ -108,19 +121,42 @@ const ObjectAvailableScreen: React.FC = () => {
           />
         )}
         <ScrollView contentContainerStyle={styles.container}>
-          <View style={styles.wrapperMap}>
-            <ImageBackground
+          <Pressable onPress={() => navigation.navigate("ObjectStack", {screen: "ObjectMap"})} style={styles.wrapperMap}>
+            <YaMap
               style={styles.map}
-              source={require('@/shared/assets/images/map.png')}
-            >
+              
+              initialRegion={{
+                lat: objCoord?.initialCoord.lat ?? 55.7558,
+                lon: objCoord?.initialCoord.lon ?? 37.6173,
+                zoom: 9,
+              }}
+            > 
+                {objCoord?.polygon && (
+                  <Polygon
+                    points={objCoord?.polygon}
+                    strokeWidth={2}
+                    strokeColor="rgba(255,0,0,0.5)"
+                    fillColor="rgba(255,0,0,0.2)"
+                  />
+                )}
+                {objCoord?.multiPolygon &&
+                  objCoord?.multiPolygon.map((polygon: Point[], idx: number) => (
+                    <Polygon
+                      key={idx}
+                      points={polygon}
+                      strokeWidth={2}
+                      strokeColor="rgba(0,0,255,0.5)"
+                      fillColor="rgba(0,0,255,0.2)"
+                    />
+                  ))}
               <View style={styles.mapContainer}>
                 <Text style={styles.mapText}>Карта</Text>
                 <View style={styles.link}>
                   <Icon name={IconName.Link} />
                 </View>
               </View>
-            </ImageBackground>
-          </View>
+            </YaMap>
+          </Pressable>
           <View style={styles.wrapper}>
             <View style={styles.wrapperBlocks}>
               <View style={styles.infoBlocks}>

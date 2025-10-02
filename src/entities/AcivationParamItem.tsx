@@ -27,7 +27,7 @@ const ActivationParamItem: React.FC<{
   const isSubItem = item.id.includes('.');
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isSubItem && styles.subContainer]}>
       <Text style={isSubItem ? styles.titleItem : styles.title}>
         <Text style={isSubItem ? styles.numberItem : styles.number}>
           {item.id}.
@@ -40,8 +40,9 @@ const ActivationParamItem: React.FC<{
           <View style={styles.buttons}>
             {options.map(option => (
               <CustomButton
-               
+                styleButton={styles.button}
                 key={option}
+                styleText={styles.buttonText}
                 text={option}
                 secondary={selected !== option}
                 onPress={readonly ? () => {}:() => setSelected(option)}
@@ -69,6 +70,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#404040',
   },
+  subContainer: {
+    paddingBottom: 13,
+  },
   number: {
     fontFamily: Fonts[800],
     lineHeight: 24,
@@ -86,6 +90,17 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontSize: 14,
     color: '#404040',
+  },
+  button: {
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 15,
+  },
+  buttonText: {
+    fontFamily: Fonts[700],
+    lineHeight: 23,
+    fontSize: 15,
+    letterSpacing: -0.2,
   },
   buttons: { flexDirection: 'row', gap: 10 },
 });

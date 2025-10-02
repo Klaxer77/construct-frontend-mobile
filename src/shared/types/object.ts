@@ -44,7 +44,9 @@ export interface IResponsibleUser {
   role: "construction_control" | string; // если будут другие роли, можно расширять
 }
 
-export type Coords = Array<[number | null, number | null]>;
+export type Coords = Array<[number, number]>;
+export type Polygon = Coords;
+export type MultiPolygon = Polygon[];
 
 export interface IFullObject {
   id: string;
@@ -58,6 +60,6 @@ export interface IFullObject {
   city: string;
   date_delivery_verification: string; // ISO строка
   start_date: string; // ISO строка
-  coords: Coords;
+  coords: number[][][] | number[][];
   responsible_user: IResponsibleUser;
 }

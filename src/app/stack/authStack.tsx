@@ -10,6 +10,7 @@ export const AuthStackScreen = () => {
       initialRouteName="InitialScreen"
       screenOptions={{
         headerShown: false,
+        gestureEnabled: false,
       }}
     > 
       <Stack.Screen name="InitialScreen" component={InitialScreen} /> 

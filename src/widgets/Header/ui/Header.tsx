@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     paddingBottom: 13,
   },
   headerTitle: {
+    maxWidth: "65%",
     fontFamily: Fonts[800],
     fontSize: 18,
     lineHeight: 28,

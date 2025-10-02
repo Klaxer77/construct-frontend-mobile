@@ -55,6 +55,7 @@ export type ObjectStackParamList = {
   ObjectAvailableObject: {
     object?: IObject;
   };
+  ObjectMap: undefined;
   ObjectTalks: {
     title?: string;
     header: string;

@@ -69,7 +69,7 @@ export const PopupChooseObject = ({
           <View style={styles.header}>
             <Image source={require("@/shared/assets/images/LogoGradient.png")}/>
             <View style={styles.headerText}>
-              <Text style={styles.headerTitle}>
+              <Text numberOfLines={1} ellipsizeMode="tail" style={styles.headerTitle}>
                 {title}
               </Text>
               <Text style={styles.headerTitle}>
@@ -97,7 +97,7 @@ export const PopupChooseObject = ({
               <Icon name={IconName.Quit}/>
               <Pressable onPress={() => {onClose(); onPress && onPress()}}>
                 <Text style={styles.tabTitle}>{"Выйти"}</Text>
-                <Text style={styles.tabSubtitle}>{`Из ${title}`}</Text>
+                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.tabSubtitle}>{`Из ${title}`}</Text>
               </Pressable>
             </View>}
             <View style={styles.profile}>

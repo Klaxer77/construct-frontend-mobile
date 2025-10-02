@@ -32,6 +32,7 @@
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.15.1",
     "react-native-svg": "^15.12.1",
+    "react-native-yamap": "^4.8.3",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0"
