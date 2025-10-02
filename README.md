@@ -26,7 +26,7 @@ npm install
 
 ```
 
-## ⚙️ Как устанавливать зависимости под mac/windows смотри в [документации React Native](https://reactnative.dev/docs/set-up-your-environment?os=macos&platform=android)
+## ⚙️ Как устанавливать зависимости под mac/windows смотрите в [документации React Native](https://reactnative.dev/docs/set-up-your-environment?os=macos&platform=android)
 
 ## ▶️ Запуск приложения
 
